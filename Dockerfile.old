@@ -1,0 +1,13 @@
+FROM microsoft/aspnetcore-build 
+
+ADD . /src
+
+WORKDIR /src
+
+RUN dotnet restore
+
+RUN dotnet publish src/DzStudentPartners.Api/DzStudentPartners.Api.csproj -o /app
+
+WORKDIR /app
+
+ENTRYPOINT ["dotnet", "DzStudentPartners.Api.dll"]
